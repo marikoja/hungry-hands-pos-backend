@@ -1,12 +1,12 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 public class MenuItem {
-    int id;
-    String name;
-    String description;
-    Double price;
-    String image_url;
-    int quantity;
+   private int id;
+   private String name;
+   private String description;
+   private Double price;
+   private String image_url;
+   private int quantity;
 
     public MenuItem(int id, String name, String description, Double price, String image_url, int quantity) {
         this.id = id;
