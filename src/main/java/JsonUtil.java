@@ -23,9 +23,7 @@ public class JsonUtil {
      */
     public static JSONArray convertResultSetIntoJSON(ResultSet resultSet) throws Exception {
         JSONArray jsonArray = new JSONArray();
-        System.out.println("HEY55");
         while (resultSet.next()) {
-            System.out.println("YOOO");
             int total_rows = resultSet.getMetaData().getColumnCount();
             JSONObject obj = new JSONObject();
             for (int i = 0; i < total_rows; i++) {
@@ -47,7 +45,6 @@ public class JsonUtil {
             }
             jsonArray.put(obj);
         }
-        System.out.println("HEYoooooo");
         return jsonArray;
     }
 
