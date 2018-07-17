@@ -23,9 +23,6 @@ public class MenuController {
             }
             return results;
         });
-        post("/menu/:", (req, res) -> {
-            //...
-        });
 
     }
 }
