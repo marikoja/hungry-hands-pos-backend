@@ -5,13 +5,16 @@ import java.sql.*;
 
 public class OrderController {
 
-    private Database db = new Database();
 
-    public OrderController() {
+    public OrderController(Connection conn) {
 
-        Connection conn = db.connect();
+        get("/hello", (request, response) -> {
+            return "Hello World";
+        });
+
         get("/order", (req, res) -> OrderItem.getAllItems(), JsonUtil.json());
 
 
     }
+
 }
