@@ -17,13 +17,13 @@ public class MenuItem {
         this.quantity = quantity;
     }
 
-    public static ArrayList<MenuItem> getAllItems() {
-        ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
-        menuItems.add(new MenuItem(1, "Burger", "A tasty fucking burger.", 14.99, "https://unsplash.com/photos/4cGJx5u2Z04",50));
-        menuItems.add(new MenuItem(2, "Fried Ramen", "Crunchy ramen noodz", 5.99, "https://unsplash.com/photos/1WeMwcnSXoI",50));
-        menuItems.add(new MenuItem(3, "PB & J", "White bread, peanut butter and jelly", 3.00, "https://unsplash.com/photos/1WeMwcnSXoI",50));
-        return menuItems;
-    }
+//    public static ArrayList<MenuItem> getAllItems() {
+//        ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+//        menuItems.add(new MenuItem(1, "Burger", "A tasty fucking burger.", 14.99, "https://unsplash.com/photos/4cGJx5u2Z04",50));
+//        menuItems.add(new MenuItem(2, "Fried Ramen", "Crunchy ramen noodz", 5.99, "https://unsplash.com/photos/1WeMwcnSXoI",50));
+//        menuItems.add(new MenuItem(3, "PB & J", "White bread, peanut butter and jelly", 3.00, "https://unsplash.com/photos/1WeMwcnSXoI",50));
+//        return menuItems;
+//    }
 
     public int getId() {
         return id;

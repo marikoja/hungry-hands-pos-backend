@@ -1,11 +1,17 @@
 import static spark.Spark.*;
+import java.sql.*;
 
 public class Main {
+
     public static void main(String[] args) {
 
         port(getHerokuAssignedPort());
 
-        new MenuController();
+        Database db = new Database();
+        Connection conn = db.connect();
+
+        new MenuController(conn);
+        new OrderController(conn);
     }
 
     static int getHerokuAssignedPort() {
