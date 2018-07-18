@@ -11,8 +11,7 @@ public class MenuController {
             int count = 0;
             String results = null;
 
-            try (Statement stmt = conn.createStatement();
-                 ResultSet rs = stmt.executeQuery(SQL)) {
+            try (Statement stmt = conn.createStatement();ResultSet rs = stmt.executeQuery(SQL)) {
                 results = JsonUtil.convertResultSetIntoJSON(rs).toString();
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
