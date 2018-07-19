@@ -1,5 +1,6 @@
 import static spark.Spark.*;
 import java.sql.*;
+import org.json.*;
 
 public class MenuController {
 
@@ -38,5 +39,22 @@ public class MenuController {
 
         });
 
+        post("/menu/:menu_id/menu_item", (req, res) -> {
+
+            JSONObject obj = new  JSONObject(req.body());
+
+            String SQL = "INSERT INTO menu_item (menu_id, name, price, description, quantity, img) " +
+                    "VALUES (1,'"+obj.get("name")+"',"+obj.get("price")+",'"+obj.get("description")+"',"+obj.get("quantity")+",'"+obj.get("img")+"') " +
+                    "RETURNING menu_item_id, name";
+            int count = 0;
+            String results = null;
+
+            try (Statement stmt = conn.createStatement();ResultSet rs = stmt.executeQuery(SQL)) {
+                results = JsonUtil.convertResultSetIntoJSON(rs).toString();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            return results;
+        });
     }
 }

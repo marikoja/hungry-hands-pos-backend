@@ -12,6 +12,8 @@ public class Database {
      * @return a Connection object
      */
     public Connection connect() {
+
+//        ~~~~~~~~LOCAL DATABSE TO HEROKU~~~~~~
 //        Connection conn = null;
 //        try {
 //            conn = DriverManager.getConnection(url, user, password);
@@ -22,6 +24,8 @@ public class Database {
 //
 //        return conn;
 
+
+//        ~~~~~~~~DEPLOY DATABSE TO HEROKU~~~~~~
         Connection conn = null;
         URI dbUri = null;
         try {

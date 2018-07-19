@@ -5,6 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+//        comment out line below to run locally
         port(getHerokuAssignedPort());
 
         Database db = new Database();
