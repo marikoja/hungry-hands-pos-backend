@@ -2,6 +2,8 @@ import java.sql.*;
 import java.net.*;
 
 public class Database {
+//    private static final String DATABASE_URL = "postgres://wrbqywcdkyrmod:3e8829002eac935e6feb847cec1980861643a07937aa7deecd7bf367ee2f3836@ec2-54-83-59-239.compute-1.amazonaws.com:5432/dcc678p2ftm0dd";
+
     private final String url = "jdbc:postgresql://localhost:5433/capstone";
     private final String user = "capstone";
     private final String password = "maggie";
@@ -13,7 +15,7 @@ public class Database {
      */
     public Connection connect() {
 
-//        ~~~~~~~~LOCAL DATABSE TO HEROKU~~~~~~
+//        ~~~~~~~~LOCAL DATABASE~~~~~~
 //        Connection conn = null;
 //        try {
 //            conn = DriverManager.getConnection(url, user, password);

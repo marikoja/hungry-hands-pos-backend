@@ -61,11 +61,15 @@ public class MenuController {
 
             JSONObject obj = new  JSONObject(req.body());
 
+            System.out.println(obj);
+
             String SQL = "UPDATE menu_item " +
                     "SET (name, price, description, quantity, img) " +
-                    "= ('"+obj.get("name")+"',"+obj.get("price")+",'"+obj.get("description")+"',"+obj.get("quantity")+",'"+obj.get("img")+"') " +
+                    "= ('"+obj.get("itemName")+"',"+obj.get("price")+",'"+obj.get("description")+"',"+obj.get("quantity")+",'"+obj.get("img")+"') " +
                     "WHERE menu_id = "+req.params(":menu_id")+" AND menu_item_id = "+req.params(":menu_item_id")+" " +
                     "RETURNING menu_item_id, name;";
+
+            System.out.println(SQL);
 
             int count = 0;
             String results = null;
