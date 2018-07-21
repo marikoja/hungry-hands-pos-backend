@@ -43,9 +43,13 @@ public class OrderController {
 
         get("/order/:order_id", (req, res) -> {
 
-            String SQL = "SELECT menu_item_id, quantity" +
-                    "FROM order_menu_item " +
-                    "WHERE order_id = "+
+            String SQL = "SELECT \"order\".order_id, \"order\".customer_id, \"order\".status, \"order\".company_id, " +
+                    "order_menu_item.order_id, order_menu_item.menu_item_id, order_menu_item.quantity, " +
+                    "menu_item.menu_item_id, menu_item.name, menu_item.price " +
+                    "FROM \"order\" " +
+                    "LEFT JOIN order_menu_item ON \"order\".order_id = order_menu_item.order_id " +
+                    "LEFT JOIN menu_item ON order_menu_item.menu_item_id = menu_item.menu_item_id " +
+                    "WHERE \"order\".order_id = " +
                     req.params(":order_id")+";";
 
             int count = 0;
