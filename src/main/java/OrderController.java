@@ -65,6 +65,26 @@ public class OrderController {
 
         });
 
+        put("/order/:order_id", (req, res) -> {
+
+            JSONObject obj = new  JSONObject(req.body());
+
+            String SQL = "UPDATE \"order\"" +
+                    "SET customer_id = 1, status = 'PAID', company_id = 1 " +
+                    "WHERE order_id = " + req.params(":order_id") + " " +
+                    "RETURNING order_id, status;";
+
+            int count = 0;
+            String results = null;
+
+            try (Statement stmt = conn.createStatement();ResultSet rs = stmt.executeQuery(SQL)) {
+                results = JsonUtil.convertResultSetIntoJSON(rs).toString();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            return results;
+        });
+
     }
 
 }
