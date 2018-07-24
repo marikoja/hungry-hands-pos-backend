@@ -28,7 +28,7 @@ public class OrderController {
             JSONObject obj = new  JSONObject(req.body());
 
             String SQL = "INSERT INTO order_menu_item (menu_item_id, quantity, order_id) " +
-                    "VALUES ("+obj.get("menu_item_id")+",1,"+ req.params(":order_id")+") " +
+                    "VALUES (" + obj.get("menu_item_id") +",1,"+ req.params(":order_id") + ") " +
                     "RETURNING order_menu_item_id, order_id";
             int count = 0;
             String results = null;
@@ -70,9 +70,11 @@ public class OrderController {
             JSONObject obj = new  JSONObject(req.body());
 
             String SQL = "UPDATE \"order\"" +
-                    "SET customer_id = 1, status = 'PAID', company_id = 1 " +
+                    "SET customer_id = 1, status = '" + obj.get("status") + "', company_id = 1 " +
                     "WHERE order_id = " + req.params(":order_id") + " " +
                     "RETURNING order_id, status;";
+
+            System.out.println(obj.get("status"));
 
             int count = 0;
             String results = null;
