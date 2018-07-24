@@ -85,6 +85,34 @@ public class OrderController {
             return results;
         });
 
+        get("/queue/:status", (req, res) -> {
+
+            String SQL = String.format("SELECT \"order\".order_id, \"order\".customer_id, \"order\".status, \"order\".company_id, " +
+                    "order_menu_item.order_id, order_menu_item.menu_item_id, order_menu_item.quantity, " +
+                    "menu_item.menu_item_id, menu_item.name, menu_item.price " +
+                    "FROM \"order\" " +
+                    "LEFT JOIN order_menu_item ON \"order\".order_id = order_menu_item.order_id " +
+                    "LEFT JOIN menu_item ON order_menu_item.menu_item_id = menu_item.menu_item_id " +
+                    "WHERE \"order\".status = '" + req.params(":status")+"';");
+
+//            System.out.println(SQL);
+
+            int count = 0;
+            String results = null;
+
+            try (Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery(SQL)) {
+                results = JsonUtil.convertResultSetIntoJSON(rs).toString();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            return results;
+
+        });
+
+
+
+
     }
 
 }
